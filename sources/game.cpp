@@ -2,7 +2,7 @@
 #include "game.hpp"
 
 
-Game::Game(Player &player1, Player &player2): player1(player1), player2(player2) {
+Game::Game(Player &player1, Player &player2) : player1(player1), player2(player2) {
 
     //cant play to games parallel
     if (this->player1.isBusy() || this->player2.isBusy()) {
@@ -41,7 +41,7 @@ void Game::playTurn() {
     }
 
     //only if not if middle of draw
-    if(p1_pit.isEmpty() && p2_pit.isEmpty()){
+    if (p1_pit.isEmpty() && p2_pit.isEmpty()) {
         player1.roundPlayed();
         player2.roundPlayed();
     }
@@ -185,9 +185,10 @@ void Game::playAll() {
 }
 
 void Game::printLastTurn() {
-    if (turns.empty())
-        throw std::logic_error("No round to print");
-    std::cout << turns.top() << std::endl;
+//    if (turns.empty())
+//        throw std::logic_error("No round to print");
+    if (!turns.empty())
+        std::cout << turns.top() << std::endl;
 }
 
 int Game::whoWinner() {
@@ -218,8 +219,8 @@ void Game::printWiner() {
 }
 
 void Game::printLog() {
-    if (turns.empty())
-        throw std::logic_error("No round to print");
+//    if (turns.empty())
+//        throw std::logic_error("No round to print");
 
     std::stack<std::string> temp;
     while (!turns.empty()) {
